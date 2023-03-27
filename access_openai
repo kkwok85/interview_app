@@ -1,24 +1,25 @@
 
-secret_key = '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'
-
 import openai
+secret_key = ''
+
 openai.api_key = secret_key
 
 
 def generate_text(prompt):
     response = openai.Completion.create(
-      engine="text-davinci-003",
-      prompt=prompt,
-      max_tokens=150,
-      temperature=0.7,
-      n=1,
-      stream=False,
-      stop=None,
-      timeout=15,
-      presence_penalty=0,
-      frequency_penalty=0
+        engine="text-davinci-003",
+        prompt=prompt,
+        max_tokens=150,
+        temperature=0.7,
+        n=1,
+        stream=False,
+        stop=None,
+        timeout=15,
+        presence_penalty=0,
+        frequency_penalty=0
     )
     message = response.choices[0].text.strip()
     return message
+
 
 print(generate_text('tell me a slogan for a home security company'))
